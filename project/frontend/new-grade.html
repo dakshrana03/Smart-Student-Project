@@ -1,0 +1,150 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="grades.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" rel="stylesheet" href="https://unicons.iconscout.com/release-pro/v4.0.0/css/line.css">
+    <title>New Grade</title>
+    <script type="text/javascript">
+
+        function addGrade() {
+                    var url = '/insertgrade';
+                    var params = "gradeName=" + document.getElementById("name").value + "&classTag=" + document.getElementById("gradetags").value;
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: params,
+                        contentType: 'application/x-www-form-urlencoded',
+                        success: function () {
+                            //Do nothing
+                            alert("Success")
+                            window.location.href = "grades.html"
+                        },
+                        error: function () {
+                            //do nothing for now
+                            alert("Did not work")
+                        }
+                    });
+                }
+        
+        
+        </script>
+</head>
+
+<body>
+
+
+
+
+    <section>
+        <!-- Siderbar begins -->
+        <nav>
+            <div class="sidebar">
+
+                <div class="menu">
+                    <ul class="links">
+                        <li>
+                            <i class="uil uil-angle-left sidebar-toggle"></i>
+                            <!-- Insert logo here  -->
+                            <span class="items"></span>
+                        </li>
+
+                        <li>
+                            <a href="dashboard.html">
+                                <i class="uil uil-apps"></i>
+                                <span class="items">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="uil uil-file-check-alt"></i>
+                                <span class="items">Todo</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="uil uil-calendar-alt"></i>
+                                <span class="items">Calendar</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="uil uil-notes"></i>
+                                <span class="items">Notes</span>
+                            </a>
+                        </li>
+
+
+                        <li class="activeitem">
+                            <a href="#">
+                                <i class="uil uil-graduation-cap"></i>
+                                <!-- Replace class name with "items" in main homescreen-->
+                                <span class="items">Grades</span>
+                            </a>
+                        </li>
+
+                        <li class="dropd">
+                            <a href="#">
+                                <i class="uil uil-map"></i>
+
+                                <span class="items">Map</span>
+                                <i class="uil uil-angle-down"></i>
+                            </a>
+                            <div class="drop">
+                                <a href="maps.html">Map</a>
+                                <a href="floorplans.html">Floor Plans</a>
+                            </div>
+                        </li>
+
+
+
+                    </ul>
+
+                    <ul class="logout">
+                        <li>
+                            <a href="#" onclick="logout()">
+                                <i class="uil uil-signout"></i>
+                                <span class="items">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+
+
+
+                </div>
+
+            </div>
+        </nav>
+
+    </section>
+    <!-- Siderbar ends -->
+
+
+
+
+    <section class="main">
+        <div class="pop" id="pop">
+                    <div class="category">
+                        <h1>New Grade</h1>
+                  
+                        <p>Name</p>
+                        <input required type="text" id="name">
+
+                        <p>Select a tag or course.</p>
+
+                            <input name="tags" id="gradetags" class="gradetags" required><br>
+
+                            <button onclick="window.location.href = 'grades.html'" type="button" >Cancel</button>
+                            
+                            <button type="submit" onclick="addGrade()">Submit</button><br>
+
+                    </div>
+                </div>
+
+    </section>

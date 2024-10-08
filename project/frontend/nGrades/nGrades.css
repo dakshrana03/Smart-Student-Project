@@ -1,0 +1,275 @@
+:root{
+  --main-text-color: #4D4D4D;
+  --main-color: #6499E9;
+  --sidebar-color: #ffffff;
+  --background-color: #ffffff;
+  --shadow-color: #d4d4d4;
+}
+
+
+body {
+  padding-top: 100px;
+  padding-left: 270px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  height: 80px;
+  right: 0;
+  background-color: white;
+  border-bottom: 2px solid var(--shadow-color);
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  z-index: 99;
+}
+
+
+.courseHeading,
+.gradesHeading,
+.addBtnDiv {
+  font-weight: bold;
+  color: var(--main-text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink:0;
+}
+  
+.addGradeBtn {
+  color: white;
+  background-color: #6499e9;
+  padding: 10px;
+  border: none;
+  width: 120px;
+  border-radius: 35px;
+  flex-shrink:0;
+}
+
+.addGradeBtn:hover {
+  opacity:0.7;
+}
+
+.webpage {
+  display: grid;
+  grid-template-columns: 750px 350px;
+  column-gap: 70px;
+}
+
+.right-bar {
+  background-color: var(--shadow-color);
+  border-radius: 5px;
+  padding: 15px;
+  height: 200px;
+  width: 90%;
+  height: 350px;
+}
+
+.gradingScheme {
+  display: grid;
+  grid-template-columns: 90px 30px 60px 60px;
+  column-gap: 10px;
+  row-gap: 20px;
+  padding: 10px;
+  color: var(--main-text-color);
+}
+
+.container {
+  background-color: white;
+  padding-bottom: 30px;
+}
+
+
+.emptyForm {
+  background-color: transparent;
+  border: none;
+}
+
+.editGradeSchemeForm,
+.addGradeSchemeForm,
+.editGradeForm,
+.addGradeForm {
+  position: fixed;
+  background: white;
+  border: 1px solid;
+  padding: 40px;
+  top: 90px;
+  left: 470px;
+  width: 400px;
+  z-index: 99;
+  border-radius: 5px;
+  border-color: #c5c5c5;
+  color: var(--main-text-color);
+}
+
+.addGradeSchemeForm input, .addGradeForm input, .editGradeSchemeForm input{
+  width: 200px;
+  height: 30px; 
+  background-color: var(--shadow-color);
+  border: none;
+  border-radius: 2px;
+  margin-left: 10px;
+  padding-left: 10px;
+  color: var(--main-text-color);
+  margin-top: 10px;
+}
+
+.addGradeSchemeForm label{
+  margin-left: 10px;
+}
+
+.NameInput,
+.totalInput,
+.scoreInput,
+.typeInput{
+  width: 300px;
+  height: 30px; 
+  background-color: var(--shadow-color);
+  border: none;
+  border-radius: 2px;
+  padding-left: 10px;
+  color: var(--main-text-color);
+  margin-top: 10px;
+
+}
+
+.typeInput {
+  margin-left: 10px;
+}
+
+
+.namelabel,
+.scorelabel,
+.typelabel,
+.typelabel{
+  font-size: 14px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  
+
+}
+
+.gradeSchemeFormSubmission,
+.formSubmission{
+  color: white;
+  background-color: #6499e9;
+  padding: 10px;
+  border: none;
+  width: 120px;
+  border-radius: 35px;
+  flex-shrink:0;
+  margin: 10px;
+  margin-top: 30px;
+}
+
+.formSubmission:hover{
+  opacity: 0.7;
+}
+
+.info-header,
+.display {
+  position: relative; 
+  display: grid;
+  
+  grid-template-columns: 200px 100px 100px 120px 120px;
+  column-gap: 10px;
+  row-gap: 10px;
+  background-color: var(--shadow-color);
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--main-text-color);
+}
+
+.info-header{
+  font-weight: bold;
+}
+
+
+.display {
+  margin-top: 20px;
+}
+
+.data-icon,
+.info-header-icons {
+  display: flex;
+  margin: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.data-icon-button{
+  color: white;
+  background-color: #6499e9;
+  padding: 10px;
+  border: none;
+  width: 120px;
+  border-radius: 35px;
+  flex-shrink:0;
+}
+
+.assignment-info, .assignment-score, .assignment-type{
+  width: 100px;
+  margin-top: 14px;
+  margin-left: 50px;
+}
+
+.right-bar{
+  color: var(--main-text-color);
+}
+
+.right-bar label{
+  color: var(--main-text-color);
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.right-bar .addToGradingScheme{
+  color: white;
+  background-color: #6499e9;
+  padding: 10px;
+  border: none;
+  width: 120px;
+  border-radius: 35px;
+  flex-shrink:0;
+}
+
+
+
+.right-bar .addToGradingScheme:hover{
+  opacity: 0.7;
+}
+
+.edit-button, .delete-button {
+  color: white;
+  background-color: #6499e9;
+  padding: 10px;
+  border: none;
+  width: 120px;
+  height: 40px;
+  border-radius: 35px;
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+
+}
+
+.edit-button:hover, .delete-button:hover{
+  opacity: 0.7;
+}
+
+.editbutton, .deletebutton{
+  color: var(--main-text-color);
+  background-color: transparent;
+  padding: 10px;
+  border: none;
+  height: 40px;
+  border-radius: 35px;
+  margin-left: 10px;
+  margin-top: -10px;
+
+}
+
+.editbutton:hover, .deletebutton:hover{
+  color: var(--main-color);
+}

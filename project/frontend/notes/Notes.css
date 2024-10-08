@@ -1,0 +1,94 @@
+html, body{
+    height: 100%;
+    margin: 0;
+}
+
+.notes{
+    display: flex;
+    height: 100%
+}
+
+.notes * {
+    font-family: sans-serif;
+}
+
+.sidebar{
+    border-right: 2px solid #dddddd;
+    flex-shrink: 0;
+    overflow-y: auto;
+    padding: 1em;
+    width: 300px;
+}
+
+.add_Notes{
+    background: #6499E9;
+    border: none;
+    border-radius: 7px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 1em;
+    padding: 0.75em 0;
+    width: 100%;
+}
+
+.add_Notes:hover{
+    background: #9cb7d3;
+}
+
+.existingNotes{
+    cursor: pointer;
+}
+
+.selectedNotes{
+    background: #f5f3f3;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.noteTitle, .noteUpdated{
+    padding: 10px;
+}
+
+.noteTitle{
+    font-size: 20px;
+}
+
+.noteContent{
+    padding: 0 10px;
+}
+
+.noteUpdated{
+    color: #c9c9c9;
+    font-style: italic;
+    text-align: right;
+    font-size: 10px;
+}
+
+.preview{
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+    flex-grow: 1;
+}
+
+.title, .noteBody{
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.title{
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.noteBody{
+    flex-grow: 1;
+    font-size: 20px;
+    line-height: 1.5;
+    margin-top: 25px;
+    resize: none;
+
+}

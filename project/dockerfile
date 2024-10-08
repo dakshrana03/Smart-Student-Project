@@ -1,0 +1,10 @@
+FROM node:latest
+
+EXPOSE 8080
+
+WORKDIR /project
+
+COPY * ./
+
+CMD ["/bin/bash"]
+

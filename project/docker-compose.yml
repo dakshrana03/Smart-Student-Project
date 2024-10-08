@@ -1,0 +1,12 @@
+version: "3.9"
+services: 
+  web:
+    build: .
+    container_name: project-server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/project
+    command: bash -c "npm install && node server.js"
+    stdin_open: true
+    tty: true

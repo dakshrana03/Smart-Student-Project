@@ -1,0 +1,124 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="maps.css">
+    <link rel="stylesheet" rel="stylesheet" href="https://unicons.iconscout.com/release-pro/v4.0.0/css/line.css">
+
+    <title>Map</title>
+</head>
+
+<body>
+
+
+
+
+    <section>
+        <!-- Siderbar begins -->
+        <nav>
+            <div class="sidebar">
+
+                <div class="menu">
+                    <ul class="links">
+                        <li>
+                            <i class="uil uil-angle-left sidebar-toggle"></i>
+                            <span class="items"></span>
+                        </li>
+
+                        <li>
+                            <a href="dashboard.html">
+                                <i class="uil uil-apps"></i>
+                                <span class="items">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/listings">
+                                <i class="uil uil-file-check-alt"></i>
+                                <span class="items">Todo</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/calendar">
+                                <i class="uil uil-calendar-alt"></i>
+                                <span class="items">Calendar</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./notes/Notes.html">
+                                <i class="uil uil-notes"></i>
+                                <span class="items">Notes</span>
+                            </a>
+                        </li>
+
+
+                        <li class="items">
+                            <a href="grades.html">
+                                <i class="uil uil-graduation-cap"></i>
+                                <span class="items">Grades</span>
+                            </a>
+                        </li>
+
+                        <li class="dropd activeitem">
+                            <a href="#">
+                                <i class="uil uil-map"></i>
+
+                                <span class="items">Map</span>
+                                <i class="uil uil-angle-down"></i>
+                            </a>
+                            <div class="drop">
+                                <a href="maps.html">Map</a>
+                                <a href="floorplans.html">Floor Plans</a>
+                            </div>
+                        </li>
+
+
+                    </ul>
+
+                    <ul class="logout">
+                        <li>
+                            <a href="#" onclick="logout()">
+                                <i class="uil uil-signout"></i>
+                                <span class="items">Logout</span>
+                            </a>
+                        </li>
+
+
+
+
+                </div>
+
+            </div>
+        </nav>
+    </section>
+    <!-- Siderbar ends -->
+
+    <section class="main">
+        <div class="map">
+
+            <iframe width="100%" height="100%%" style="border:0" loading="lazy" allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2ADCIXK4snM14aAMhK6c82UCIqD6bMVI
+                &q=Space+Needle,Place+Riel+Saskatoon+SK">
+            </iframe>
+
+
+        </div>
+
+    </section>
+
+
+    <script>
+        function logout() {
+            if (confirm('Are you sure you want to sign out?')) {
+                window.location.href = 'LoginPage.html';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

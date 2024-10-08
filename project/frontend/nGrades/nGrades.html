@@ -1,0 +1,156 @@
+<html>
+  <head>
+    <title>Grades</title>
+    <link rel="stylesheet" href="nGrades.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" rel="stylesheet" href="https://unicons.iconscout.com/release-pro/v4.0.0/css/line.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      function logout() {
+          if (confirm('Are you sure you want to sign out?')) {
+              window.location.href = 'LoginPage.html';
+          }
+      }
+    </script>
+    
+
+  </head>
+  <body>
+    <div class="header">
+      <div class="courseHeading" id="course-heading">Course-Name</div>
+      <div class="gradesHeading">Grades</div>
+      <div class="addBtnDiv"><button class="addGradeBtn"><i class="uil uil-plus"></i> Add Grade</button></div>
+      </div>
+    <div class="sidebar">
+      <nav>
+        <div class="sidebar">
+          <div class="menu">
+            <ul class="links">
+              <li>
+                <i class="uil uil-angle-left sidebar-toggle"></i>
+                <!-- Insert logo here  -->
+                <span class="items"></span>
+              </li>
+
+              <li>
+                <a href="../dashboard.html">
+                  <i class="uil uil-apps"></i>
+                  <span class="items">Dashboard</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="/listings">
+                  <i class="uil uil-file-check-alt"></i>
+                  <span class="items">Todo</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="../Calendar.html">
+                  <i class="uil uil-calendar-alt"></i>
+                  <span class="items">Calendar</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="../Notes.html">
+                  <i class="uil uil-notes"></i>
+                  <span class="items">Notes</span>
+                </a>
+              </li>
+
+
+              <li class="activeitem">
+                <a href="../grades.html">
+                  <i class="uil uil-graduation-cap"></i>
+
+                  <span class="items">Grades</span>
+                </a>
+              </li>
+              <!-- Replace class name with "items" in main homescreen-->
+              <li class="dropd items">
+                <a href="#">
+                  <i class="uil uil-map"></i>
+
+                  <span class="items">Map</span>
+                  <i class="uil uil-angle-down"></i>
+                </a>
+                  <div class="drop">
+                    <a href="../maps.html">Map</a>
+                    <a href="../floorplans.html">Floor Plans</a>
+                  </div>
+              </li>
+
+          </ul>
+
+          <ul class="logout">
+            <li>
+              <a href="#" onclick="logout()">
+                <!-- <a href="/"> -->
+                <i class="uil uil-signout"></i>
+                <span class="items">Logout</span>
+              </a>
+            </li>
+          </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="webpage">  
+      <div class = container>
+        <div class="emptyForm"></div>
+        <div class="info-header">
+          <div class="info-header-icons">Assignment</div>
+          <div class="info-header-icons">Score</div>
+          <div class="info-header-icons">Type</div>
+          <div class="info-header-icons">Edit</div>
+          <div class="info-header-icons">Delete</div>
+        </div>
+        <div class="display"></div>
+      </div>
+      <div>
+        <div class="right-bar">
+          <label>Grading Scheme</label>
+          <button class="addToGradingScheme"><i class="uil uil-plus"></i> Add Type</button>
+          <br><br>
+          <div class="gradingScheme"></div>
+        </div>
+        <br><br>
+        <div class="right-bar">
+          <label>Percent Value of Each Type</label>
+          <br><br>
+          <div class="average">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="nGrades.js" ></script>
+
+    <script type="text/javascript">
+      /**
+       * Renames the title of the page.  At load, change the name of class page to what it was
+       * clicked.
+       * Params (str) cname - cookie key that we need
+       * returns the value of the key
+       * */
+      function renameClass(cname) {
+          let name = cname + "=";
+          let decodedCookie = decodeURIComponent(document.cookie);
+          let ca = decodedCookie.split(';');
+          for (let i = 0; i < ca.length; i++) {
+              let c = ca[i];
+              while (c.charAt(0) == ' ') c = c.substring(1);
+              if (c.indexOf(name) == 0)
+                  return c.substring(name.length, c.length);
+          }
+          return "";
+      }
+      window.addEventListener("load", () => {
+          document.getElementById("course-heading").innerHTML = renameClass("current_classpage");
+      });
+  </script>
+  </body>
+</html>

@@ -1,0 +1,167 @@
+<!-- views/index.ejs -->
+
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar App</title>
+    <link rel="stylesheet" href="/sidebar.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release-pro/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.css" />
+</head>
+
+<body>
+
+    <!-- Siderbar begins -->
+    <nav>
+        <div class="sidebar">
+
+            <div class="menu">
+                <ul class="links">
+                    <li>
+                        <i class="uil uil-angle-left sidebar-toggle"></i>
+                        <!-- Insert logo here  -->
+                        <span class="items"></span>
+                    </li>
+
+                    <li>
+                        <a href="../../dashboard.html">
+                            <i class="uil uil-apps"></i>
+                            <span class="items">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/listings">
+                            <i class="uil uil-file-check-alt"></i>
+                            <span class="items">Todo</span>
+                        </a>
+                    </li>
+
+                    <li class="activeitem">
+                        <a href="/calendar">
+                            <i class="uil uil-calendar-alt"></i>
+                            <span class="items">Calendar</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="../../notes/Notes.html">
+                            <i class="uil uil-notes"></i>
+                            <span class="items">Notes</span>
+                        </a>
+                    </li>
+
+
+                    <li class="items">
+                        <a href="../../grades.html">
+                            <i class="uil uil-graduation-cap"></i>
+
+                            <span class="items">Grades</span>
+                        </a>
+                    </li>
+                    <!-- Replace class name with "items" in main homescreen-->
+                    <li class="dropd items">
+                        <a href="#">
+                            <i class="uil uil-map"></i>
+
+                            <span class="items">Map</span>
+                            <i class="uil uil-angle-down"></i>
+                        </a>
+                        <div class="drop">
+                            <a href="../../maps.html">Map</a>
+                            <a href="../../floorplans.html">Floor Plans</a>
+                        </div>
+                    </li>
+
+
+                </ul>
+
+                <ul class="logout">
+                    <li>
+                        <a href="/">
+                            <i class="uil uil-signout"></i>
+                            <span class="items">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+
+
+
+            </div>
+
+        </div>
+    </nav>
+
+    <div id="addEventButton" class="add-event-button"
+        style="position: absolute; top: 10px; left: 85%; transform: translateX(-50%); cursor: pointer; font-size: 30px;">
+        +
+    </div>
+
+
+
+
+
+    <div id="calendar"></div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Fetch tasks from the server
+            $.ajax({
+                url: '/api/tasks',
+                type: 'GET',
+                success: function (events) {
+                    console.log('Received events from the server:', events);
+
+                    // Initialize the calendar
+                    $('#calendar').fullCalendar({
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,agendaWeek,agendaDay'
+                        },
+                        editable: true,
+                        timezone: 'local',
+                        events: events.map(task => ({
+                            id: task._id,
+                            title: task.title,
+                            start: moment.utc(task.startDate).local().add(1, 'days').format(), // Convert to local time
+                            end: moment.utc(task.endDate).local().add(1, 'days').format(), // Add 1 day and convert to local time
+                            url: `/listings/${task._id}`
+                        })),
+                    });
+                }
+            });
+        });
+
+    </script>
+    <script>
+        // Get the button element
+        const addButton = document.getElementById('addEventButton');
+
+        // Add a click event listener
+        addButton.addEventListener('click', function () {
+            // Display a confirm dialog
+            const createEvent = confirm('Do you want to create an event?');
+
+            // Check the user's choice
+            if (createEvent) {
+
+                // Redirect to a create event URL
+                window.location.href = `/listings/new`;
+            } else {
+                // If "No," do nothing or perform any other desired action
+                alert('Event creation canceled.');
+            }
+        });
+    </script>
+</body>
+
+</html>

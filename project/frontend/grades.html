@@ -1,0 +1,179 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="grades.css">
+    <link rel="stylesheet" rel="stylesheet" href="https://unicons.iconscout.com/release-pro/v4.0.0/css/line.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Grades</title>
+    <script type="text/javascript">
+
+
+    function addLink(gradeObj_name){
+        gradeObj_name.forEach(item =>{
+            var gradeObj = $(`  
+            <ul class="gradeObjList">
+                <li class="gradeObj" name="${item.name}">
+                    <span id=${item.name}">${item.name}</span>
+
+                </li>
+            </ul>`);
+            $(gradeObj).click(() => {
+                setCookie("current_classpage", item.name);
+                window.location.href = "./nGrades/nGrades.html";
+            });
+            $("#gradeObjContainer").append(gradeObj);
+        })
+
+        }
+
+    function getAllGrades() {
+            $.get("/getallgrades", function (data) {
+                console.log(data)
+                addLink(data);
+            }).done(function () {
+                console.log("Request successful");
+            }).fail(function () {
+                console.log("Request failed");
+            }).always(function () {
+                console.log("Request completed");
+            });
+        }
+        getAllGrades();
+
+        
+    function setCookie(cookieName, value){
+        console.log(value);
+        document.cookie = cookieName + "=" + value + ";path=/";
+    }
+    </script>
+</head>
+
+<body>
+
+
+
+
+    <section>
+        <!-- Siderbar begins -->
+        <nav>
+            <div class="sidebar">
+
+                <div class="menu">
+                    <ul class="links">
+                        <li>
+                            <i class="uil uil-angle-left sidebar-toggle"></i>
+                            <!-- Insert logo here  -->
+                            <span class="items"></span>
+                        </li>
+
+                        <li>
+                            <a href="dashboard.html">
+                                <i class="uil uil-apps"></i>
+                                <span class="items">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li>
+
+                            <a href="/listings">
+                                <i class="uil uil-file-check-alt"></i>
+                                <span class="items">Todo</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/calendar">
+                                <i class="uil uil-calendar-alt"></i>
+                                <span class="items">Calendar</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./notes/Notes.html">
+                                <i class="uil uil-notes"></i>
+                                <span class="items">Notes</span>
+                            </a>
+                        </li>
+
+
+                        <li class="activeitem">
+                            <a href="grades.html">
+                                <i class="uil uil-graduation-cap"></i>
+                                <!-- Replace class name with "items" in main homescreen-->
+                                <span class="items">Grades</span>
+                            </a>
+                        </li>
+
+                        <li class="dropd">
+                            <a href="#">
+                                <i class="uil uil-map"></i>
+
+                                <span class="items">Map</span>
+                                <i class="uil uil-angle-down"></i>
+                            </a>
+                            <div class="drop">
+                                <a href="maps.html">Map</a>
+                                <a href="floorplans.html">Floor Plans</a>
+                            </div>
+                        </li>
+
+
+
+                    </ul>
+
+                    <ul class="logout">
+                        <li>
+                        <a href="#" onclick="logout()">
+                            <i class="uil uil-signout"></i>
+                            <span class="items">Logout</span>
+                        </a>
+                        <li>
+                    </ul>
+
+
+
+                </div>
+
+            </div>
+        </nav>
+
+    </section>
+    <!-- Siderbar ends -->
+
+
+
+
+    <section class="main">
+        <div id="grades">
+            <h1>Grades</h1>
+                <button onclick="window.location.href = 'new-grade.html'"><i class="uil uil-plus" id="add"></i> Add Grade</button><br>
+
+                <!--Below mentioned button is no more required.-->
+                <!-- <button onclick="window.location.href = 'nGrades/nGrades.html'"><i class="uil uil-plus" id="add"></i>Show Grades</button><br> -->
+
+        </div>
+
+        <div id="gradeObjContainer" class="gradeObjContainer">
+          
+        </div>
+
+
+    </section>
+
+    <script>
+        function logout() {
+            if (confirm('Are you sure you want to sign out?')) {
+                window.location.href = 'LoginPage.html';
+            }
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

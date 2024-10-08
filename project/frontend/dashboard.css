@@ -1,0 +1,168 @@
+/* ------------- Dashboard -------------------- */
+:root{
+    --main-text-color: #4D4D4D;
+    --main-color: #6499E9;
+    --sidebar-color: #ffffff;
+    --background-color: #ffffff;
+    --shadow-color: #d4d4d4;
+}
+
+
+
+.Dashboard{
+    position: sticky;
+    left: 300px;
+    background-color: var(--background-color);
+    height: 100vh;
+    width: calc(100% - 300px);
+    padding: 10px 14px;
+}
+.Dashboard .top .search-box{
+    position: relative;
+    left: 250px;
+    top: 0;
+    display: flex;
+    width: calc(100% - 250px);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background-color:var(--background-color);
+} 
+
+.Dashboard .top .search-box{
+    position: relative;
+    height: 45px;
+    max-width: 600px;
+    width: 100%;
+    margin-left: 0px;
+    
+}
+
+.top .search-box input{
+    position: absolute;
+    background-color: #f0f0f0;
+    border-radius: 30px;
+    padding: 0 25px 0 25px;
+    border: none;
+    height: 50%;
+    width: 60%;
+    font-size: 15px;
+    line-height: 65px;
+    font-weight: 400;
+    outline: none;
+}
+
+.top .search-box i{
+    position: absolute;
+    padding-left: 5px;
+    left: 15px;
+    font-size: 16px;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    color:#AFAFAF;
+}
+
+
+.dashboard .dash{
+    padding-top: 40px;
+
+}
+
+.dash .title{
+    display: flex;
+    align-items: center;
+    margin-bottom: 35px;
+    color: #524e4e;
+    
+}
+
+.dash .title .text{
+    font-size: 30px;
+    font-weight: 500;
+    margin-left: 30px;
+    margin-top: 60px;
+
+}
+
+.dash .boxes{
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    grid-gap: 20px;
+}
+
+.dash .boxes .box{
+    display: flex;
+    align-items: center;
+    box-shadow: 10px 10px 5px #ddeaf0;
+    width: 250px;
+    height: 150px;
+    background-color: #F9F9F9;
+    border: none;
+}
+
+
+.box h3{
+    font-size: 25px;
+    font-weight: 500;
+    color:#686363;
+    margin-left: 65px;
+}
+
+.box .uil-plus{
+    font-size: 55px;
+    font-weight: 500;
+    color:#9d9d9d;
+    margin-left: 100px;
+}
+
+
+.color-popup{
+    display: none;
+    position: fixed;
+    bottom: 10px;;
+    right: 15px;
+    box-shadow: 3px 1px 6px 1px #c4c4c4;
+    z-index: 9;
+}
+
+.form-container{
+    background-color:#FFFFFF;
+    max-width:300px;
+    padding-top: 10px;
+    padding: 40px;
+    height: 200px;
+    width: 200px;
+}
+
+.form-container .text{
+    margin-top: 20px;
+    background-color: #f1f1f1;
+    border: 0;
+    height: 20px;
+    width: 203px;
+    padding: 3px;
+    font-size: 10px;
+}
+
+.form-container .cancel{
+    margin-right: 30px;
+}
+
+.form-container button{
+    align-items: center;
+    border-radius: 30px;
+    border: 0;
+    padding: 10px;
+    border-radius: 20px;
+    background: var(--main-color);
+    color: #F5F5F5;
+    width: 80px;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+

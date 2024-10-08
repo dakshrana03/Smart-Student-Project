@@ -1,0 +1,160 @@
+:root{
+    --main-text-color: #4D4D4D;
+    --main-color: #6499E9;
+    --sidebar-color: #ffffff;
+    --background-color: #ffffff;
+    --shadow-color: #f4f4f4;
+}
+
+.MainClass{
+    margin-left: 260px;
+}
+
+h1{
+    font-size: 25px;
+}
+
+.MainClass .top .search-box{
+    position: relative;
+    left: 80px;
+    top: 0;
+    display: flex;
+    width: calc(100% - 250px);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background-color:var(--background-color);
+} 
+
+.MainClass .top .search-box{
+    position: relative;
+    height: 45px;
+    max-width: 600px;
+    width: 100%;
+    margin-left: 0px;
+    /* text-align: center; */
+    
+}
+
+.MainClass .className {
+    margin-top: 100px;
+    color: var(--main-text-color);
+    margin-left: 60px;
+}
+
+.top .search-box input{
+    position: absolute;
+    background-color: #f0f0f0;
+    border-radius: 30px;
+    padding: 0 25px 0 25px;
+    border: none;
+    height: 50%;
+    width: 100%;
+    font-size: 15px;
+    /* text-align: center; */
+    line-height: 65px;
+    font-weight: 400;
+    outline: none;
+}
+
+.top .search-box i{
+    /* margin-bottom: 10px; */
+    position: absolute;
+    padding-left: 5px;
+    left: 15px;
+    font-size: 16px;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    color:#AFAFAF;
+}
+
+
+button{
+    /* float: right; */
+    align-items: center;
+    border-radius: 30px;
+    border: 0;
+    padding: 10px;
+    border-radius: 20px;
+    background: var(--main-color);
+    color: #F5F5F5;
+    width: 90px;
+    height: 36px; 
+    margin-top: 20px;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    /* border: 0px; */
+}
+
+.MainClass span{
+    font-size: 25px;
+    margin-left: 60px;
+}
+
+#task_container{
+    margin-top: 30px;
+    /* margin-bottom: -50px; */
+}
+
+.task1{
+    margin-top: 60px;
+    background-color: #ededed;
+    padding: 8px;
+    height: 20px;
+    width: 90%;
+    color: var(--main-text-color);
+    margin-left: 40px;
+}
+
+#task_container .task1 .no4{
+    margin-right: 60px;
+}
+
+h5{
+    margin-right: 140px;
+    padding-left: 10px;
+}
+
+.task1 h5{
+    display: inline;
+}
+
+.btn, .bbtn{
+    border-radius: 0px;
+    width: 350px;
+    height: 250px;
+    margin-left: 90px;
+    /* margin-top: 30px; */
+    font-size: 30px;
+    /* margin-right: 210px; */
+    /* display: inline; */
+}
+
+.btn{
+    /* margin-left: 100px; */
+}
+
+.bbtn{
+    /* margin-left: 180px; */
+}
+
+.tasks{
+    /* display: inline-block; */
+    color: var(--main-text-color);
+}
+
+.MainClass a{
+    text-decoration: none;
+}
+
+.Add{
+    float: right;
+    margin-right: 50px;
+    margin-left: 920px;
+
+}
+

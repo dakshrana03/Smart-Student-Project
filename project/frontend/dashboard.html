@@ -1,0 +1,262 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" rel="stylesheet" href="https://unicons.iconscout.com/release-pro/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <title>Dashboard</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        /**
+         * Helper function for showing all the class. Creates a button with name <classname>_class. When clicked, request the class info.
+        */
+        function addButton(button_name) {
+            button_name.forEach(item => {
+                var button = $(` 
+                <div> 
+                    <button class="box box1" name="${item.ClassName}_class"> 
+                        <h3> ${item.ClassName} </h3> 
+                    </button> 
+                </div>`
+                );
+                $(button).click(() => {
+                    getSpecificClass(item.ClassName);
+                })
+                $("#buttonContainer").prepend(button);
+            });
+        }
+
+        /**
+         * Append all the buttons before the "plus" button
+         */
+        function getAllClasses() {
+            $.get("/getallclass", function (data) {
+                addButton(data);
+            }).done(function () {
+                console.log("Request successful");
+            }).fail(function () {
+                console.log("Request failed");
+            }).always(function () {
+                console.log("Request completed");
+            });
+        }
+
+        /**
+         * Request for the specific class here!
+         * */
+        function getSpecificClass(classNeeded){
+            var url = '/getClass';
+            var params = "name=" + classNeeded;
+            var result;
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: params,
+                contentType: 'application/x-www-form-urlencoded',
+                success: function(data){
+                    //Do nothing
+                    window.location.href = "class.html";
+                },
+                error: function(){
+                    alert("Server had troubles getting the info. Sorry");
+                }
+            })
+        }
+
+        /**
+         * Adding a class using "POST" method to database.
+         * */
+        function addClass() {
+            var url = '/createclass';
+            var params = "name=" + document.getElementById("name").value + "&color=" + document.getElementById("colorpicker").value;
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: params,
+                contentType: 'application/x-www-form-urlencoded',
+                success: function () {
+                    //Do nothing
+                    window.location.href = "dashboard.html"
+                },
+                error: function () {
+                    //do nothing for now
+                }
+            });
+        }
+        $("document").ready(function(){
+            getAllClasses();
+            $("#add-button").click(addClass);
+            $("#addClassOnDashboard").click(addDashboard);
+        })
+    </script>
+</head>
+
+<body>
+    <section>
+        <!-- Siderbar begins -->
+        <nav>
+            <div class="sidebar">
+
+                <div class="menu">
+                    <ul class="links">
+                        <li>
+                            <i class="uil uil-angle-left sidebar-toggle"></i>
+                            <!-- Insert logo here  -->
+                            <span class="items"></span>
+                        </li>
+
+                        <li class="activeitem">
+                            <a href="dashboard.html">
+                                <i class="uil uil-apps"></i>
+                                <span class="items">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/listings">
+                                <i class="uil uil-file-check-alt"></i>
+                                <span class="items">Todo</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/calendar">
+                                <i class="uil uil-calendar-alt"></i>
+                                <span class="items">Calendar</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./notes/Notes.html">
+                                <i class="uil uil-notes"></i>
+                                <span class="items">Notes</span>
+                            </a>
+                        </li>
+
+
+                        <li class="items">
+                            <a href="grades.html">
+                                <i class="uil uil-graduation-cap"></i>
+
+                                <span class="items">Grades</span>
+                            </a>
+                        </li>
+                        <!-- Replace class name with "items" in main homescreen-->
+                        <li class="dropd items">
+                            <a href="#">
+                                <i class="uil uil-map"></i>
+
+                                <span class="items">Map</span>
+                                <i class="uil uil-angle-down"></i>
+                            </a>
+                            <div class="drop">
+                                <a href="maps.html">Map</a>
+                                <a href="floorplans.html">Floor Plans</a>
+                            </div>
+                        </li>
+
+                       
+
+                    </ul>
+
+                    <ul class="logout">
+                        <li>
+                            <a href="#" onclick="logout()">
+                                <!-- <a href="/"> -->
+                                <i class="uil uil-signout"></i>
+                                <span class="items">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+        
+
+        <section class="Dashboard">
+            <!-- Main Dashboard -->
+            <!-- <div class="top">
+                <div class="search-box">
+                    <i class="uil uil-search"></i>
+                    <input type="text" placeholder="Search.." id="search">
+                </div> -->
+
+                <!-- the div for the title. displays dashbord on the screen -->
+                <div class="dash">
+                    <div class="overview">
+                        <div class="title">
+                            <span class="text">Dashboard</span>
+                        </div>
+                    </div>
+
+                    <!-- a div for the classes that appear on the screen when added -->
+                    <div class="boxes" id="buttonContainer">
+
+                        <!-- this is where all the boxes will be placed and a pop up appears when the add button is
+                        clicked-->
+                        <button class="box box2" onclick="addDashboard()">
+                            <i class="uil uil-plus"></i>
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- html for the popup -->
+                <div class="color-popup" id="popup">
+                    <form action="" class="form-container" id="class-form">
+                        <h3>Add Course</h3>
+                        <label for="name"><b>Course Name</b></label><br>
+                        <input type="text" class="text" placeholder="Ex: cmpt 370" id="name" name="name" required />
+                        <br>
+                        <br>
+                        <label for="colorpicker">Select a Color:</label>
+                        <input type="color" id="colorpicker" name="colorpicker" value="#0000ff">
+
+                        <br>
+                        <br>
+                        <!-- the cancel btn with an onclich function -->
+                        <button type="button" class="btn cancel" onclick="closeDashboard()">Cancel</button>
+                        <button type="button" class="btn" id="add-button">Save</button>
+
+                    </form>
+                </div>
+                
+            </div>
+            </section>
+
+
+            </div>
+            </div>
+
+            <script>
+                // course = { name, color }
+
+
+                // shows the pop up
+                function addDashboard() {
+                    document.getElementById('popup').style.display = "block";
+                }
+
+                // closes the pop up
+                function closeDashboard() {
+                    document.getElementById('popup').style.display = "none";
+                }
+
+                $("#cancel-form").click(closeDashboard);
+
+                //AddEventListener for adding class
+
+                // a logout function for when the logout btn is clicked. 
+                function logout() {
+                    if (confirm('Are you sure you want to sign out?')) {
+                        window.location.href = 'LoginPage.html';
+                    }
+                }
+
+
+            </script>
+</body>
+
+</html>

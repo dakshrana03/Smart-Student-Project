@@ -1,0 +1,173 @@
+:root {
+    --main-text-color: #4D4D4D;
+    --main-color: #6499E9;
+    --sidebar-color: #ffffff;
+    --background-color: #ffffff;
+    --shadow-color: #f4f4f4;
+}
+
+button {
+    cursor: pointer;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: var(--sidebar-color);
+    border-right: 2px solid var(--shadow-color);
+
+}
+
+
+
+nav .menu {
+    margin-top: 30px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu li {
+    list-style: none;
+
+}
+
+.menu li a {
+    text-decoration: none;
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+
+}
+
+.menu li i {
+    min-width: 45px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.menu li a i {
+    min-width: 45px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--main-text-color);
+}
+
+
+.menu li a .items {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--main-text-color);
+}
+
+.menu .activeitem i {
+    color: var(--main-color)
+}
+
+.menu .activeitem .items {
+    color: var(--main-color)
+}
+
+.menu .activeitem a:hover i,
+.menu .activeitem a:hover .items {
+    color: #6ba3f9;
+}
+
+
+
+
+
+.links li a:hover .items,
+.links li a:hover i {
+    color: var(--main-color);
+}
+
+
+.menu button {
+    border-radius: 20px;
+    background: var(--main-color);
+    color: #F5F5F5;
+    width: 196px;
+    height: 36px;
+
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: 0px;
+}
+
+.menu button:hover {
+    background-color: #6ba3f9;
+}
+
+.logout li a:hover .items,
+.logout li a:hover i {
+    color: var(--main-color);
+}
+
+
+.main {
+    position: sticky;
+    background-color: var(--background-color);
+    left: 270px;
+    height: 100%;
+    width: calc(100% - 250px);
+}
+
+
+
+
+.menu li .sidebar-toggle {
+    margin-right: 10px;
+    align-items: right;
+    justify-content: right;
+    color: transparent;
+
+}
+
+
+
+.drop {
+    display: none;
+    position: sticky;
+    background-color: var(--background-color);
+    min-width: 160px;
+    z-index: 1;
+
+}
+
+
+.drop a {
+    text-decoration: none;
+    padding: 2px 16px;
+    color: var(--main-text-color);
+    display: block;
+    font-size: 14px;
+}
+
+
+
+.dropd:hover .drop {
+    display: block;
+}
+
+.drop a:hover {
+    color: var(--main-color);
+}
+
+#calendar {
+    margin-left: 250px;
+}

@@ -1,0 +1,203 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="class.css">
+    <link rel="stylesheet" rel="stylesheet" href="https://unicons.iconscout.com/release-pro/v4.0.0/css/line.css">
+    <title>Class</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        function showAllTask(todoList) {
+            console.log(todoList);
+            if (todoList.length > 0) {
+                todoList.forEach(element => {
+                    var taskInfo = $(`
+                    <div class="task1">
+                        <h5 class="no1">${element.title}</h5>
+                        <h5 class="no2">${element.tags}</h5>
+                        <h5 class="no3">Start: ${new Date(element.startDate).toLocaleDateString()}</h5>
+                        <h5 class="no4">End: ${new Date(element.endDate).toLocaleDateString()}</h5>
+                    </div>
+                    `);
+                    $("#task_container").append(taskInfo);
+                });
+            }
+            else return;
+        }
+
+        /**
+         * Request for the specific class here! Use this to set current class page cookie
+         * */
+        function getSpecificClass(classNeeded) {
+            var url = '/getTodoObj';
+            var params = "name=" + classNeeded;
+            var result;
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: params,
+                contentType: 'application/x-www-form-urlencoded',
+                success: function (data) {
+                    console.log(data);
+                    showAllTask(data);
+                },
+                error: function () {
+                    alert("Server had troubles getting the info. Sorry");
+                }
+            });
+        }
+
+        $("document").ready(() => {
+            getSpecificClass(renameClass("current_classpage"));
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <!-- Sidebar starts here -->
+
+    <section>
+        <!-- Siderbar begins -->
+        <nav>
+            <div class="sidebar">
+
+                <div class="menu">
+                    <ul class="links">
+                        <li>
+                            <i class="uil uil-angle-left sidebar-toggle"></i>
+                            <span class="items"></span>
+                        </li>
+
+                        <li class="activeitem">
+                            <a href="dashboard.html">
+                                <i class="uil uil-apps"></i>
+                                <span class="items">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/listings">
+                                <i class="uil uil-file-check-alt"></i>
+                                <span class="items">Todo</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/calendar">
+                                <i class="uil uil-calendar-alt"></i>
+                                <span class="items">Calendar</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./notes/Notes.html">
+                                <i class="uil uil-notes"></i>
+                                <span class="items">Notes</span>
+                            </a>
+                        </li>
+
+
+                        <li class="items">
+                            <a href="grades.html">
+                                <i class="uil uil-graduation-cap"></i>
+
+                                <span class="items">Grades</span>
+                            </a>
+                        </li>
+                        <!-- Replace class name with "items" in main homescreen-->
+                        <li class="dropd items">
+                            <a href="#">
+                                <i class="uil uil-map"></i>
+
+                                <span class="items">Map</span>
+                                <i class="uil uil-angle-down"></i>
+                            </a>
+                            <div class="drop">
+                                <a href="maps.html">Map</a>
+                                <a href="floorplans.html">Floor Plans</a>
+                            </div>
+                        </li>
+
+
+                    </ul>
+
+                    <ul class="logout">
+                        <li>
+                            <a href="#" onclick="logout()">
+                                <!-- <a href="/"> -->
+                                <i class="uil uil-signout"></i>
+                                <span class="items">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <section class="MainClass">
+            <h1 id="className" class="className">temp</h1>
+
+            <!-- <div class="top">
+                <div class="search-box">
+                    <i class="uil uil-search"></i>
+                    <input type="text" placeholder="Search.." id="search">
+                </div> -->
+            <!-- </div> -->
+
+            <div class="tasks">
+                <span>Todo</span>
+                <a href="">
+                    <button class="Add"><i class="uil uil-plus"></i> Add New</button>
+                </a>
+
+            </div>
+
+            <div class="task-container" id="task_container"> </div>
+
+            <div>
+                <a href="nGrades/nGrades.html">
+                    <button class="btn" type="button">Grades</button>
+                </a>
+
+                <a href="notes/Notes.html">
+                    <button class="bbtn">Notes</button>
+                </a>
+
+            </div>
+
+        </section>
+
+        <script type="text/javascript">
+            /**
+             * Renames the title of the page.  At load, change the name of class page to what it was
+             * clicked.
+             * Params (str) cname - cookie key that we need
+             * returns the value of the key
+             * */
+            function renameClass(cname) {
+                let name = cname + "=";
+                let decodedCookie = decodeURIComponent(document.cookie);
+                let ca = decodedCookie.split(';');
+                for (let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1);
+                    if (c.indexOf(name) == 0)
+                        return c.substring(name.length, c.length);
+                }
+                return "";
+            }
+            window.addEventListener("load", () => {
+                document.getElementById("className").innerHTML = renameClass("current_classpage");
+            });
+        </script>
+
+</body>
+
+</html>

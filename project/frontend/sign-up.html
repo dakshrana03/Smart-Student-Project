@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign-up page</title>
+        <link rel="stylesheet" href="sign-up.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        
+        <script type="text/javascript">
+    
+        </script>
+    </head>
+    <body>
+        <div class="box-shell">
+            <div class="greeting">
+                Sign-up
+            </div>
+            <div>
+                <p>Name:</p>
+                <input class="username" type="text" placeholder="Enter username" id="usrName">
+            </div>
+            <div>
+                <p>Password:</p>
+                <input class="password" type="password" placeholder="Enter password" id="usrPassword">
+            </div>
+            <div class="log-in-link">
+                <a href="LoginPage.html"> Already have an account? Click here!</a>
+            </div>
+            <div>
+                <button type="button" id="openWebsiteButton" class="sign-up-button">Create Account</button>
+            </div>
+
+            <script type="text/javascript">
+            /**
+             * Create a user and request a post to server to add the user in the database. If successful, move to the login page.
+             */
+            function createUser(){
+                let url = '/createuser';
+                let params = "usrName=" + document.getElementById("usrName").value + "&usrPassword="+document.getElementById("usrPassword").value;
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: params,
+                    contentType: 'application/x-www-form-urlencoded',
+                    success: function(){
+                        alert("Success!");
+                        window.location.href = "LoginPage.html";
+                    },
+                    error: function(){
+                        alert("Failed to sign up!");
+                    }
+                })
+            }
+            $("document").ready(() => {
+                $('#openWebsiteButton').click(createUser);
+            });
+            </script>
+        </div>
+    </body>
+</html>

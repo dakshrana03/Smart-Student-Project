@@ -1,0 +1,130 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="/todo.css">
+    <link rel="stylesheet" href="../../sidebar.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release-pro/v4.0.0/css/line.css">
+</head>
+
+<body>
+    <!-- Siderbar begins -->
+    <nav>
+        <div class="sidebar">
+
+            <div class="menu">
+                <ul class="links">
+                    <li>
+                        <i class="uil uil-angle-left sidebar-toggle"></i>
+                        <!-- Insert logo here  -->
+                        <span class="items"></span>
+                    </li>
+
+                    <li>
+                        <a href="../../dashboard.html">
+                            <i class="uil uil-apps"></i>
+                            <span class="items">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="activeitem">
+                        <a href="/listings">
+                            <i class="uil uil-file-check-alt"></i>
+                            <span class="items">Todo</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/calendar">
+                            <i class="uil uil-calendar-alt"></i>
+                            <span class="items">Calendar</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="../../notes/Notes.html">
+                            <i class="uil uil-notes"></i>
+                            <span class="items">Notes</span>
+                        </a>
+                    </li>
+
+
+                    <li class="items">
+                        <a href="../../grades.html">
+                            <i class="uil uil-graduation-cap"></i>
+
+                            <span class="items">Grades</span>
+                        </a>
+                    </li>
+                    <!-- Replace class name with "items" in main homescreen-->
+                    <li class="dropd items">
+                        <a href="#">
+                            <i class="uil uil-map"></i>
+
+                            <span class="items">Map</span>
+                            <i class="uil uil-angle-down"></i>
+                        </a>
+                        <div class="drop">
+                            <a href="../../maps.html">Map</a>
+                            <a href="../../floorplans.html">Floor Plans</a>
+                        </div>
+                    </li>
+
+
+                </ul>
+
+                <ul class="logout">
+                    <li>
+                        <a href="/">
+                            <i class="uil uil-signout"></i>
+                            <span class="items">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+
+
+
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Edit Task</h2>
+        <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+            <input name="listing[title]" value="<%= listing.title %>" type="text" required />
+            <br /><br />
+            <textarea name="listing[description]" required><%= listing.description %></textarea>
+            <br /><br />
+            <p>Start Date</p>
+            <input name="listing[startDate]" value="<%= listing.startDate.toLocaleDateString()%>" type="date"
+                required />
+            <br /><br />
+            <p>End Date</p>
+            <input name="listing[endDate]" value="<%= listing.endDate.toLocaleDateString() %>" type="date" required />
+            <br /><br />
+            <input name="listing[time]" value="<%= listing.time %>" type="time" required />
+            <br /><br />
+            <input name="listing[tags]" value="<%= listing.tags %>" type="text" required />
+            <br /><br />
+            <label for="reminder">Reminder</label><br/>
+            <select name="listing[reminder]" id="reminder" value="<%=listing.reminder  %>" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <br /><br />
+            <button class="btn">Save</button>
+            <a href="/listings">
+                <button class="btn" type="button">Back</button>
+            </a>
+        </form>
+        <!-- <br> -->
+        <!-- <a href="/listings">Back to all Tasks Page!</a> -->
+    </div>
+</body>
+
+</html>
